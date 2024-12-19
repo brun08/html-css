@@ -1,0 +1,14 @@
+const shareFile = async (filePath) => {
+    const localFilePath =
+      Platform.OS == "ios" ? filePath : file://${filePath};
+
+    if (await Sharing.isAvailableAsync()) {
+      await Sharing.shareAsync(localFilePath, {
+        mimeType: "application/pdf",
+        dialogTitle: "Compartilhar PDF",
+        UTI: "com.adobe.pdf",
+      });
+    } else {
+      console.log("Sharing is not available on this device");
+    }
+  };
